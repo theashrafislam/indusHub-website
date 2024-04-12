@@ -15,7 +15,7 @@ import slide4 from "../assets/slide4.jpg";
 
 const Banner = () => {
     return (
-        <div className='mt-8'>
+        <div className='mt-2'>
             <Swiper
                 pagination={{
                     type: 'progressbar',
@@ -26,22 +26,22 @@ const Banner = () => {
             >
                 <SwiperSlide>
                     <div>
-                        <img className='w-full lg:h-[650px]' src={slide1} alt="" />
+                        <img className='w-full h-[260px] md:h-[400px] lg:h-[650px]' src={slide1} alt="" />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
-                        <img className='w-full lg:h-[650px]' src={slide2} alt="" />
+                        <img className='w-full h-[260px] md:h-[400px] lg:h-[650px]' src={slide2} alt="" />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
-                        <img className='w-full lg:h-[650px]' src={slide3} alt="" />
+                        <img className='w-full h-[260px] md:h-[400px] lg:h-[650px]' src={slide3} alt="" />
                     </div>
                 </SwiperSlide>
                 <SwiperSlide>
                     <div>
-                        <img className='w-full lg:h-[650px]' src={slide4} alt="" />
+                        <img className='w-full h-[260px] md:h-[400px] lg:h-[650px]' src={slide4} alt="" />
                     </div>
                 </SwiperSlide>
             </Swiper>

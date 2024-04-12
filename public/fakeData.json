@@ -1,6 +1,6 @@
 [
     {
-      "image": "warehouse_image.jpg",
+      "image": "https://i.ibb.co/yfH1wHM/warehouses.jpg",
       "estate_title": "Spacious Warehouse in Industrial Park",
       "id": 1,
       "segment_name": "Warehouses",
@@ -12,7 +12,7 @@
       "facilities": ["Loading docks", "High ceilings", "Security system"]
     },
     {
-      "image": "factory_image.jpg",
+      "image": "https://i.ibb.co/WgmMcjg/factories.jpg",
       "estate_title": "State-of-the-Art Factory Complex",
       "id": 2,
       "segment_name": "Factories",
@@ -24,7 +24,7 @@
       "facilities": ["Production lines", "Quality control labs", "Employee facilities"]
     },
     {
-      "image": "production_plant_image.jpg",
+      "image": "https://i.ibb.co/hM6gmVj/production-plants.webp",
       "estate_title": "Green Energy Production Plant",
       "id": 3,
       "segment_name": "Production plants",
@@ -36,7 +36,7 @@
       "facilities": ["Solar panels", "Wind turbines", "Energy storage facilities"]
     },
     {
-      "image": "industrial_park_image.jpg",
+      "image": "https://i.ibb.co/b2Zjp5Z/Industrial-parks.webp",
       "estate_title": "Industrial Park Complex",
       "id": 4,
       "segment_name": "Industrial parks",
@@ -48,7 +48,7 @@
       "facilities": ["Office spaces", "Warehousing", "Transportation services"]
     },
     {
-      "image": "cold_storage_image.jpg",
+      "image": "https://i.ibb.co/FX3b0nS/Cold-storage-facilities.webp",
       "estate_title": "Cold Storage Facility",
       "id": 5,
       "segment_name": "Cold storage facilities",
@@ -60,7 +60,7 @@
       "facilities": ["Temperature-controlled rooms", "Freezer storage", "Loading docks"]
     },
     {
-      "image": "power_plant_image.jpg",
+      "image": "https://i.ibb.co/Hd0N9z6/Power-plants.png",
       "estate_title": "Power Generation Plant",
       "id": 6,
       "segment_name": "Power plants",
