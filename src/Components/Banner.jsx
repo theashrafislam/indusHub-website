@@ -15,7 +15,7 @@ import slide4 from "../assets/slide4.jpg";
 
 const Banner = () => {
     return (
-        <div>
+        <div className='mt-8'>
             <Swiper
                 pagination={{
                     type: 'progressbar',
