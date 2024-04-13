@@ -1,4 +1,14 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../Provider/AuthProvider";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
+
+const signOutSuccess = () => toast.success("Signed out. Until next time, stay inspired!");
+const signOutError = () => toast.error("Sign out unsuccessful. Let's try once more for a smooth exit.");
+
+
 const Navbar = () => {
     const navLinks = <>
         <li className="font-semibold"><NavLink to="/">Home</NavLink></li>
@@ -7,6 +17,20 @@ const Navbar = () => {
         <li className="font-semibold"><NavLink to="/contactUs">Contact Us</NavLink></li>
         <li className="font-semibold"><NavLink to="/register">Register</NavLink></li>
     </>
+
+    const { user, userSignOut } = useContext(AuthContext);
+
+    const handleSignOut = () => {
+        userSignOut()
+            .then(result => {
+                console.log(result);
+                signOutSuccess()
+            })
+            .catch(error => {
+                console.log(error);
+                signOutError()
+            })
+    }
 
     return (
         <div className="navbar bg-base-100 border-2">
@@ -27,11 +51,23 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
-                <button className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">
-                    <Link to="/login">Log In</Link>
-                </button>
-
+                {
+                    user ?
+                        <div className="flex items-center justify-center">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Sign Out</button>
+                        </div>
+                        :
+                        <button className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">
+                            <Link to="/login">Log In</Link>
+                        </button>
+                }
             </div>
+            <ToastContainer />
         </div>
     );
 };
