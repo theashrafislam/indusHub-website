@@ -15,16 +15,6 @@ const Register = () => {
 
     const [showPass, setShowPass] = useState(false);
 
-
-
-    // const handleShow = () => {
-    //     setShowPass(false)
-    // }
-    // const handleHide = () => {
-    //     setShowPass(true)
-    // }
-
-
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { fullName, email, photo, password } = data;
