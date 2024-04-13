@@ -5,13 +5,17 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const lengthWarning = () => toast.warning("Your password must be at least six characters long.");
 const uppercaseWarning = () => toast.warning("Please include at least one uppercase letter in your password.");
 const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
+const signUpSuccess = () => toast.success("Welcome aboard! Your account is now ready to explore. Enjoy the journey ahead!");
+const signUpError = () => toast.error("Account opening was not completed due to some error.");
 
 const Register = () => {
+    const {signUp} = useContext(AuthContext);
 
     const [showPass, setShowPass] = useState(false);
 
@@ -31,7 +35,17 @@ const Register = () => {
             lowercaseWarning();
             return;
         }
-        console.log(password)
+
+        signUp(email, password)
+            .then(result => {
+                console.log(result)
+                signUpSuccess()
+            })
+            .catch(error => {
+                console.log(error);
+                signUpError()
+            })
+        
     };
     return (
         <div className="mt-4">

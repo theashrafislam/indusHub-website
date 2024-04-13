@@ -1,17 +1,35 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from "../Provider/AuthProvider";
+
+
+const signInSuccess = () => toast.success("Log in success! Welcome back!");
+const signInError = () => toast.error("Oops! Looks like something went wrong. Let's try again.");
 
 const LogIn = () => {
+    const {singIn} = useContext(AuthContext)
+
     const [showPass, setShowPass] = useState(false);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { email, password } = data;
 
-        console.log(email, password);
+        singIn(email, password)
+            .then(result => {
+                console.log(result);
+                signInSuccess()
+            })
+            .catch(error => {
+                console.log(error);
+                signInError()
+            })
+
     };
     return (
         <div className="mt-4">
@@ -53,6 +71,7 @@ const LogIn = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer />
         </div>
     );
 };
