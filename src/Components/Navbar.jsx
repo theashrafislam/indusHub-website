@@ -57,8 +57,9 @@ const Navbar = () => {
                     user ?
                         <div className="flex items-center justify-center">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
-                                <div className="w-10 rounded-full">
-                                    <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                
+                                <div className="w-10 rounded-full" title={user?.displayName}>
+                                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
                                 </div>
                             </div>
                             <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Sign Out</button>
