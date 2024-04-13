@@ -8,7 +8,7 @@ import SweetAlert2 from 'react-sweetalert2';
 
 
 const LogIn = () => {
-    const {singIn, user, loginWithGoogle} = useContext(AuthContext);
+    const {singIn, user, loginWithGoogle, loginWithGitHub} = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
     const [swalProps, setSwalProps] = useState({});
     const location = useLocation();
@@ -46,9 +46,29 @@ const LogIn = () => {
         loginWithGoogle()
             .then(result => {
                 console.log(result);
+                setTimeout(() => {
+                    navigate(location.state ? location.state : "/")
+                }, 500);
             })
             .catch(error => {
                 console.log(error);
+            })
+    };
+    const handleGithub = () => {
+        loginWithGitHub()
+            .then(result => {
+                console.log(result);
+                setTimeout(() => {
+                    navigate(location.state ? location.state : "/")
+                }, 500);
+            })
+            .catch(error => {
+                console.log(error);
+                setSwalProps({
+                    show: true,
+                    title: 'Login Failed!',
+                    text: 'Oops! Your login was not successful. Your email or password is incorrect.',
+                });
             })
     }
 
@@ -88,7 +108,7 @@ const LogIn = () => {
                         <button onClick={handleGoolge} className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
                     </div>
                     <div className="w-full">
-                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
+                        <button onClick={handleGithub} className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
                     </div>
                 </div>
             </div>
