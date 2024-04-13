@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { FaGithub, FaGoogle } from "react-icons/fa";
 
 const LogIn = () => {
     const [showPass, setShowPass] = useState(false);
@@ -45,10 +46,10 @@ const LogIn = () => {
                 </div>
                 <div className="flex justify-between items-center gap-5 mt-5">
                     <div className="w-full">
-                        <button className="btn w-full text-xl bg-violet-600 text-gray-50 hover:text-black">Google</button>
+                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
                     </div>
                     <div className="w-full">
-                        <button className="btn w-full text-xl bg-violet-600 text-gray-50 hover:text-black">GitHub</button>
+                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
                     </div>
                 </div>
             </div>
