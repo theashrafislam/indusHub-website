@@ -1,23 +1,26 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import SweetAlert2 from 'react-sweetalert2';
 
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
+
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const lengthWarning = () => toast.warning("Your password must be at least six characters long.");
 const uppercaseWarning = () => toast.warning("Please include at least one uppercase letter in your password.");
 const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
-const signUpSuccess = () => toast.success("Welcome aboard! Your account is now ready to explore. Enjoy the journey ahead!");
-const signUpError = () => toast.error("Account opening was not completed due to some error.");
 
 const Register = () => {
     const {signUp} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const [showPass, setShowPass] = useState(false);
+    const [swalProps, setSwalProps] = useState({});
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
@@ -37,13 +40,27 @@ const Register = () => {
         }
 
         signUp(email, password)
-            .then(result => {
-                console.log(result)
-                signUpSuccess()
-            })
+        .then(result => {
+            setSwalProps({
+                show: true,
+                title: 'Registration Successful.',
+                text: 'Your registration was successful. Welcome aboard!',
+            });
+            console.log(result);
+            setTimeout(() => {
+                navigate("/");
+            }, 1);
+        })
             .catch(error => {
                 console.log(error);
-                signUpError()
+                if(!error){
+                    return;
+                }
+                setSwalProps({
+                    show: true,
+                    title: 'Registration Failed!',
+                    text: "We're sorry, but your registration was not successful. Please check your information and try again. If you continue to experience issues, please contact support for assistance.",
+                });
             })
         
     };
@@ -90,6 +107,7 @@ const Register = () => {
 
             </div>
             <ToastContainer />
+            <SweetAlert2 {...swalProps} />
         </div>
     );
 };

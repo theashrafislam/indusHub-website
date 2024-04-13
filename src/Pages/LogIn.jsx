@@ -1,36 +1,57 @@
 import { useContext, useState } from "react";
 import { IoEye, IoEyeOff } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { AuthContext } from "../Provider/AuthProvider";
+import SweetAlert2 from 'react-sweetalert2';
 
-
-const signInSuccess = () => toast.success("Log in success! Welcome back!");
-const signInError = () => toast.error("Oops! Looks like something went wrong. Let's try again.");
 
 const LogIn = () => {
-    const {singIn} = useContext(AuthContext)
-
+    const {singIn, user, loginWithGoogle} = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
+    const [swalProps, setSwalProps] = useState({});
+    const location = useLocation();
+    const navigate = useNavigate()
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { email, password } = data;
 
         singIn(email, password)
             .then(result => {
+                setSwalProps({})
+                setSwalProps({
+                    show: true,
+                    title: 'Registration Successful.',
+                    text: 'Your registration was successful. Welcome aboard!',
+                });
                 console.log(result);
-                signInSuccess()
+                setTimeout(() => {
+                    navigate(location.state ? location.state : "/")
+                }, 500);
+                
+            })
+            .catch(error => {
+                setSwalProps({})
+                setSwalProps({
+                    show: true,
+                    title: 'Login Failed!',
+                    text: 'Oops! Your login was not successful. Your email or password is incorrect.',
+                });
+            })
+    };
+
+    const handleGoolge = () => {
+        loginWithGoogle()
+            .then(result => {
+                console.log(result);
             })
             .catch(error => {
                 console.log(error);
-                signInError()
             })
+    }
 
-    };
     return (
         <div className="mt-4">
             <div className="text-center mx-4 my-3">
@@ -64,14 +85,14 @@ const LogIn = () => {
                 </div>
                 <div className="flex justify-between items-center gap-5 mt-5">
                     <div className="w-full">
-                        <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
+                        <button onClick={handleGoolge} className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"> <FaGoogle /> Google</button>
                     </div>
                     <div className="w-full">
                         <button className="btn w-full text-lg md:text-xl bg-violet-600 text-gray-50 hover:text-black"><FaGithub /> GitHub</button>
                     </div>
                 </div>
             </div>
-            <ToastContainer />
+            <SweetAlert2 {...swalProps} />
         </div>
     );
 };

@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,12 +19,14 @@ const Navbar = () => {
     </>
 
     const { user, userSignOut } = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const handleSignOut = () => {
         userSignOut()
             .then(result => {
                 console.log(result);
-                signOutSuccess()
+                signOutSuccess();
+                navigate("/")
             })
             .catch(error => {
                 console.log(error);
@@ -62,9 +64,7 @@ const Navbar = () => {
                             <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Sign Out</button>
                         </div>
                         :
-                        <button className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">
-                            <Link to="/login">Log In</Link>
-                        </button>
+                        <Link to="/login" className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log In</Link>
                 }
             </div>
             <ToastContainer />

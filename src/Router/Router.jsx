@@ -8,6 +8,7 @@ import ContactUs from "../Pages/ContactUs";
 import Register from "../Pages/Register";
 import LogIn from "../Pages/LogIn";
 import EstateDetails from "../Pages/EstateDetails";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -41,7 +42,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/estateDetails/:id",
-                element: <EstateDetails></EstateDetails>,
+                element: <PrivateRoute><EstateDetails></EstateDetails></PrivateRoute>,
                 loader: () => fetch('/fakeData.json')
             }
         ]
