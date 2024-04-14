@@ -8,7 +8,7 @@ const ContactUs = () => {
                     <title>Contact Us || Contact Us of IndusHub</title>
                 </Helmet>
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
-                    <div className="py-6 md:py-0 md:px-6">
+                    <div className="py-6 md:py-0 md:px-6" data-aos="zoom-in-right" data-aos-duration="1000">
                         <h1 className="text-4xl font-bold">Get in touch</h1>
                         <p className="pt-2 pb-4">Fill in the form to start a conversation</p>
                         <div className="space-y-4">
@@ -33,7 +33,7 @@ const ContactUs = () => {
                             </p>
                         </div>
                     </div>
-                    <form noValidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6">
+                    <form noValidate="" className="flex flex-col py-6 space-y-6 md:py-0 md:px-6" data-aos="zoom-in-left"data-aos-duration="1000">
                         <label className="block">
                             <span className="mb-1">Full name</span>
                             <input type="text" placeholder="Leroy Jenkins" className="block w-full rounded-md shadow-sm focus:ring focus:ring-opacity-75 focus:dark:ring-violet-600 dark:bg-gray-100 border-2 p-2" />

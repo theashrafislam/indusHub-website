@@ -11,10 +11,10 @@ const EstateDetails = () => {
 
     return (
         <div className="space-y-5 mx-4 md:mx-4 lg:mx-0 mt-4">
-            <div>
+            <div data-aos="zoom-in-down" data-aos-duration="1000">
                 <img className="w-full h-[200px] md:h-[400px] lg:h-[600px] rounded-2xl" src={image} alt="" />
             </div>
-            <div>
+            <div data-aos="fade-right" data-aos-duration="1000">
                 <h1 className="font-bold text-2xl md:text-3xl mb-2">{estate_title}</h1>
                 <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Segment: </span>{segment_name}</p>
                 <p className="text-gray-700 text-base mb-2"><span className='font-bold'>Description: </span>{description}</p>

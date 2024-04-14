@@ -6,13 +6,13 @@ const UserProfile = () => {
     const { user, loading } = useContext(AuthContext);
     return (
         <HelmetProvider>
-            <div className="mt-8">
+            <div className="mt-8" data-aos="zoom-in-down" data-aos-duration="1000">
                 <Helmet>
                     <title>Your Profile || User Profile of IndusHub</title>
                 </Helmet>
                 <div className="flex flex-col justify-center items-center">
                     <div className="w-4/12 md:w-3/12 lg:w-2/12 mx-auto">
-                        <img className="w-full rounded-full" src={user?.photoURL} alt="" />
+                        <img className="w-full rounded-2xl" src={user?.photoURL} alt="" />
                     </div>
                     <div className="mt-4">
                         <h1 className="text-xl"><span className="font-bold">Name:</span> {user?.displayName}</h1>

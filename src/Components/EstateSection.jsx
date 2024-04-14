@@ -13,7 +13,7 @@ const EstateSection = () => {
 
     return (
         <div>
-            <div className="text-center my-16">
+            <div className="text-center my-16" data-aos="fade-down" data-aos-duration="500">
                 <h1 className="text-3xl font-semibold mb-2">Industrial Estates</h1>
                 <p className="text-lg">Discover diverse industrial estates offering state-of-the-art<br /> facilities and strategic locations for optimal operational efficiency and productivity.</p>
             </div>

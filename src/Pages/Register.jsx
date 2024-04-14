@@ -1,10 +1,6 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
-import SweetAlert2 from 'react-sweetalert2';
-
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
 
@@ -12,71 +8,67 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
-const lengthWarning = () => toast.warning("Your password must be at least six characters long.");
-const uppercaseWarning = () => toast.warning("Please include at least one uppercase letter in your password.");
-const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
+import toast, { Toaster } from 'react-hot-toast';
+
+// import { ToastContainer, toast } from 'react-toastify';
+//   import 'react-toastify/dist/ReactToastify.css';
+
+
+// const lengthWarning = () => toast.warning("Your password must be at least six characters long.");
+// const uppercaseWarning = () => toast.warning("Please include at least one uppercase letter in your password.");
+// const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
 
 const Register = () => {
     const { signUp, updateUserProfile, setReload } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [showPass, setShowPass] = useState(false);
-    const [swalProps, setSwalProps] = useState({});
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = data => {
         const { fullName, email, photo, password } = data;
 
         if (password.length < 6) {
-            lengthWarning();
+            toast('Your password must be at least six characters long.',{icon: '⚠',});
             return;
         }
         else if (!/(?=.*?[A-Z])/.test(password)) {
-            uppercaseWarning();
+            toast('Please include at least one uppercase letter in your password.',{icon: '⚠',});
             return;
         }
         else if (!/(?=.*?[a-z])/.test(password)) {
-            lowercaseWarning();
+            toast('Your password must contain at least one lowercase letter.',{icon: '⚠',});
             return;
         }
 
         signUp(email, password)
             .then(result => {
-                setSwalProps({
-                    show: true,
-                    title: 'Registration Successful.',
-                    text: 'Your registration was successful. Welcome aboard!',
-                });
                 console.log(result);
+                toast.success('Welcome aboard! Your account is now ready to explore. Enjoy the journey ahead!', { duration: 3000 });
+                setTimeout(() => {
+                    navigate("/login");
+                }, 3000);
+
                 //updateUserProfile
                 updateUserProfile(fullName, photo)
                     .then(() => {
                         console.log('profile updated');
-                        setReload(true)
+                        setReload(true);
+                        // toast.success('Profile Updated', { duration: 3000 });
                     })
                     .catch(() => {
                         console.log('profile not updated');
+                        // toast.success('Profile not updated', { duration: 3000 });
                     })
-
-                setTimeout(() => {
-                    navigate("/");
-                }, 1);
             })
             .catch(error => {
                 console.log(error);
-                if (!error) {
-                    return;
-                }
-                setSwalProps({
-                    show: true,
-                    title: 'Registration Failed!',
-                    text: "We're sorry, but your registration was not successful. Please check your information and try again. If you continue to experience issues, please contact support for assistance.",
-                });
+                toast.error("Oops! Let's fix that error and get you onboarded smoothly.", { duration: 3000 });
             })
     };
     return (
         <HelmetProvider>
-            <div className="mt-4">
+            <div className="mt-4" data-aos="zoom-in-down" data-aos-duration="1000">
                 <Helmet>
                     <title>Registration Page || Registration Page of IndusHub</title>
                 </Helmet>
@@ -120,8 +112,8 @@ const Register = () => {
                     <p className="font-semibold mt-2">If you already have an account. Please <Link to="/login" className="text-red-500">Log In</Link></p>
 
                 </div>
-                <ToastContainer />
-                <SweetAlert2 {...swalProps} />
+                <Toaster position="top-right" />
+                {/* <ToastContainer /> */}
             </div>
         </HelmetProvider>
     );

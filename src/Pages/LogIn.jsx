@@ -4,14 +4,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
-import SweetAlert2 from 'react-sweetalert2';
+// import SweetAlert2 from 'react-sweetalert2';
 import { Helmet, HelmetProvider } from "react-helmet-async";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const LogIn = () => {
     const { singIn, user, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
-    const [swalProps, setSwalProps] = useState({});
     const location = useLocation();
     const navigate = useNavigate()
 
@@ -21,25 +21,16 @@ const LogIn = () => {
 
         singIn(email, password)
             .then(result => {
-                setSwalProps({})
-                setSwalProps({
-                    show: true,
-                    title: 'Registration Successful.',
-                    text: 'Your registration was successful. Welcome aboard!',
-                });
                 console.log(result);
+                toast.success('Log in Success! Welcome Back!', {duration: 3000});
                 setTimeout(() => {
                     navigate(location.state ? location.state : "/")
-                }, 500);
+                },3000);
 
             })
             .catch(error => {
-                setSwalProps({})
-                setSwalProps({
-                    show: true,
-                    title: 'Login Failed!',
-                    text: 'Oops! Your login was not successful. Your email or password is incorrect.',
-                });
+                console.log(error);
+                toast.error("Oops! Looks like something went wrong. Let's try again.")
             })
     };
 
@@ -47,29 +38,28 @@ const LogIn = () => {
         loginWithGoogle()
             .then(result => {
                 console.log(result);
+                toast.success('Log in Success! Welcome Back!', {duration: 2000});
                 setTimeout(() => {
                     navigate(location.state ? location.state : "/")
-                }, 500);
+                }, 2000);
             })
             .catch(error => {
                 console.log(error);
+                toast.error("Oops! Looks like something went wrong. Let's try again.")
             })
     };
     const handleGithub = () => {
         loginWithGitHub()
             .then(result => {
                 console.log(result);
+                toast.success('Log in Success! Welcome Back!', {duration: 2000});
                 setTimeout(() => {
                     navigate(location.state ? location.state : "/")
-                }, 500);
+                }, 2000);
             })
             .catch(error => {
                 console.log(error);
-                setSwalProps({
-                    show: true,
-                    title: 'Login Failed!',
-                    text: 'Oops! Your login was not successful. Your email or password is incorrect.',
-                });
+                toast.error("Oops! Looks like something went wrong. Let's try again.")
             })
     }
 
@@ -117,7 +107,7 @@ const LogIn = () => {
                         </div>
                     </div>
                 </div>
-                <SweetAlert2 {...swalProps} />
+                <Toaster position="top-right" />
             </div>
         </HelmetProvider>
     );

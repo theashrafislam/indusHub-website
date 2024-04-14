@@ -25,7 +25,7 @@ const Banner = () => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div>
+                    <div data-aos="zoom-in" data-aos-duration="500">
                         <img className='w-full h-[260px] md:h-[400px] lg:h-[650px]' src={slide1} alt="" />
                     </div>
                 </SwiperSlide>
