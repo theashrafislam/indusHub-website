@@ -1,4 +1,4 @@
-**Website Name: IndusHub**
+### Website Name: IndusHub
 
  **Live Site URl: www.facebook.com/theashrafislam**
 
@@ -21,3 +21,12 @@
 * **Toast Notifications for User Feedback:**
    1. Utilizes React Hot Toast to display toast notifications, providing immediate feedback to users upon successful login, registration or encountering errors during authentication processes. Toast notifications enhance user experience by conveying important messages in a non-intrusive manner.
    2. Toast notifications enhance user experience by conveying important messages in a non-intrusive manner.
+
+### Here are the 3 npm packages used for the challenge task.
+
+1. AOS Package
+2. React Hook Form
+3. Swiper slider
+
+
+## Thank Your
