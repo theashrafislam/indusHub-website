@@ -13,6 +13,7 @@ const AuthProvider = ({ children }) => {
 
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [reload, setReload] = useState(false);
 
     //createUser
     const signUp = (email, password) => {
@@ -42,13 +43,15 @@ const AuthProvider = ({ children }) => {
         return signInWithPopup(auth, githubProvider)
     }
     //updateProfile
-    const updateUserProfile = (displayName, photo) => {
+    const updateUserProfile = (displayName, photo, email) => {
         return updateProfile(auth.currentUser, {
             displayName: displayName,
-            photoURL: photo
+            photoURL: photo,
+            email: email
         })
             .then(() =>{
                 console.log("profile updated");
+                setLoading(true)
             })
             .catch(() =>{
                 console.log("profile not updated");
@@ -64,7 +67,7 @@ const AuthProvider = ({ children }) => {
         return () => {
             unSubscribe();
         }
-    }, [])
+    }, [reload])
 
 
 
@@ -80,7 +83,8 @@ const AuthProvider = ({ children }) => {
         loading,
         loginWithGoogle,
         loginWithGitHub,
-        updateUserProfile
+        updateUserProfile,
+        setReload,
     }
 
     return (
