@@ -16,7 +16,7 @@ const uppercaseWarning = () => toast.warning("Please include at least one upperc
 const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
 
 const Register = () => {
-    const {signUp} = useContext(AuthContext);
+    const {signUp, updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [showPass, setShowPass] = useState(false);
@@ -40,17 +40,26 @@ const Register = () => {
         }
 
         signUp(email, password)
-        .then(result => {
+            .then(result => {
             setSwalProps({
                 show: true,
                 title: 'Registration Successful.',
                 text: 'Your registration was successful. Welcome aboard!',
             });
             console.log(result);
+            //updateUserProfile
+            updateUserProfile(fullName, photo)
+                .then(() => {
+                    console.log('profile updated');
+                })
+                .catch(() => {
+                    console.log('profile not updated');
+                })
+
             setTimeout(() => {
                 navigate("/");
             }, 1);
-        })
+            })
             .catch(error => {
                 console.log(error);
                 if(!error){
@@ -62,7 +71,6 @@ const Register = () => {
                     text: "We're sorry, but your registration was not successful. Please check your information and try again. If you continue to experience issues, please contact support for assistance.",
                 });
             })
-        
     };
     return (
         <div className="mt-4">

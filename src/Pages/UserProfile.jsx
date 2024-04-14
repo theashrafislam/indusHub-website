@@ -6,7 +6,7 @@ const UserProfile = () => {
     return (
         <div className="mt-8">
             <div className="flex flex-col justify-center items-center">
-                <div className="w-2/12 mx-auto">
+                <div className="w-4/12 md:w-3/12 lg:w-2/12 mx-auto">
                     <img className="w-full rounded-full" src={user?.photoURL} alt="" />
                 </div>
                 <div className="mt-4">

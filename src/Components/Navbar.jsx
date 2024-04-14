@@ -53,16 +53,16 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="navbar-end">
+
                 {
                     user ?
                         <div className="flex items-center justify-center">
                             <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
-                                
                                 <div className="w-10 rounded-full" title={user?.displayName}>
-                                    <img alt="Tailwind CSS Navbar component" src={user?.photoURL} />
+                                    <img alt="User Images" src={user?.photoURL && user?.photoURL} />
                                 </div>
                             </div>
-                            <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Sign Out</button>
+                            <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>
                         </div>
                         :
                         <Link to="/login" className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log In</Link>
