@@ -3,6 +3,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+// import profile from "../assets/profile-icon.png"
 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -16,13 +17,14 @@ const signOutError = () => toast.error("Sign out unsuccessful. Let's try once mo
 const Navbar = () => {
     const navLinks = <>
         <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/">Home</NavLink></li>
-        <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/userProfile">User Profile</NavLink></li>
+        {/* <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/userProfile">User Profile</NavLink></li> */}
         <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/updateProfile">Update Profile</NavLink></li>
         <li className="font-semibold" data-aos="fade-up" data-aos-duration="500"><NavLink to="/contactUs">Contact Us</NavLink></li>
         <li className="font-semibold" data-aos="fade-down" data-aos-duration="500"><NavLink to="/register">Register</NavLink></li>
     </>
 
     const { user, userSignOut } = useContext(AuthContext);
+    console.log(user);
     const navigate = useNavigate()
 
     const handleSignOut = () => {
@@ -63,7 +65,7 @@ const Navbar = () => {
                         <div data-aos="fade-left" data-aos-duration="500" className="flex items-center justify-center">
                             <Link to="/userProfile" tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar mr-3">
                                 <div className="w-10 rounded-full" title={user?.displayName}>
-                                    <img alt="User Images" src={user?.photoURL && user?.photoURL} />
+                                    <img alt="User Images" src={user?.photoURL && user.photoURL} />
                                 </div>
                             </Link>
                             <button onClick={handleSignOut} className="btn md:text-base font-bold bg-violet-600 text-gray-50 hover:text-black">Log out</button>

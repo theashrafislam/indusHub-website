@@ -8,7 +8,7 @@
 
 * **Social Login Integration:** Users can access the platform with ease and flexibility by choosing to log in using their GitHub or Google accounts.
 
-* **Dynamic Page Titles:** Uses React Helmet Async to dynamically change the page names, resulting in more meaningful page titles that improve user experience and SEO.
+* **Responsive Design:** Access IndusHub from any device, including desktops, laptops, tablets, and smartphones, with a fully responsive design optimized for all screen sizes and resolutions.
 
 * **Form Validation and Error Handling:** Ensures that users submit accurate information during the registration and login processes by implementing form validation using React Hook Form.
 

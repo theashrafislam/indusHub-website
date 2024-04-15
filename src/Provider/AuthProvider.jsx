@@ -48,13 +48,6 @@ const AuthProvider = ({ children }) => {
             displayName: displayName,
             photoURL: photo
         })
-            .then(() =>{
-                console.log("profile updated");
-                setLoading(true)
-            })
-            .catch(() =>{
-                console.log("profile not updated");
-            })
     }
 
     //onState

@@ -5,7 +5,8 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import toast, { Toaster } from 'react-hot-toast';
 const UpdateProfile = () => {
 
-    const { updateUserProfile, setReload } = useContext(AuthContext)
+    const { updateUserProfile, setReload, user } = useContext(AuthContext);
+    const {displayName, email, photoURL} = user;
 
     const { register, handleSubmit, formState: { errors }} = useForm();
     const onSubmit = data => {
@@ -34,13 +35,16 @@ const UpdateProfile = () => {
                     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
                         <div className="flex flex-col">
                             <label htmlFor="name" className="text-lg">Name</label>
-                            <input type="text" name="name" id="name" className="border-2 p-2" placeholder="Enter your name" {...register("name", { required: true })} />
+                            <input type="text" name="name" id="name" defaultValue={displayName} className="border-2 p-2" placeholder="Enter your name" {...register("name", { required: true })} />
                             {errors.name && <span className="text-red-500 mt-1">This field is required</span>}
-
+                        </div>
+                        <div className="flex flex-col">
+                            <label htmlFor="email" className="text-lg">email</label>
+                            <input type="email" name="email" id="email" defaultValue={email} className="border-2 p-2" placeholder="Enter your name" {...register("email",)} />
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="photo" className="text-lg">Photo URL</label>
-                            <input type="text" name="photo" id="photo" className="border-2 p-2" placeholder="Enter your photoURL" {...register("photo", { required: true })} />
+                            <input type="text" name="photo" id="photo" defaultValue={photoURL} className="border-2 p-2" placeholder="Enter your photoURL" {...register("photo", { required: true })} />
                             {errors.photo && <span className="text-red-500 mt-1">This field is required</span>}
                         </div>
                         <div className="flex flex-col">

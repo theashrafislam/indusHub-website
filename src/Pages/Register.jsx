@@ -12,7 +12,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const Register = () => {
-    const { signUp, updateUserProfile, setReload } = useContext(AuthContext);
+    const { signUp, updateUserProfile, setReload, userSignOut } = useContext(AuthContext);
     const navigate = useNavigate()
 
     const [showPass, setShowPass] = useState(false);
@@ -36,6 +36,7 @@ const Register = () => {
 
         signUp(email, password)
             .then(result => {
+                userSignOut()
                 console.log(result);
                 toast.success('Welcome aboard! Your account is now ready to explore. Enjoy the journey ahead!', { duration: 3000 });
                 setTimeout(() => {
