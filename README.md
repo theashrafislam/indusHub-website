@@ -1,6 +1,8 @@
 ### Website Name: IndusHub
 
- **Live Site URl: www.facebook.com/theashrafislam**
+ **Firebase Live Site URl: https://b9a9-indushub-website.web.app/**
+
+ **Netlify Live Site URL: https://b9a9-indushub-website.netlify.app/**
 
 ### **Here are five bullet points features and characteristics.**
 
