@@ -26,7 +26,7 @@ const UpdateProfile = () => {
         <HelmetProvider>
             <div className="mt-5" data-aos="zoom-in-down" data-aos-duration="1000">
                 <Helmet>
-                    <title>Update Your Profile || User Update Profile of IndusHub</title>
+                    <title>Update Profile || IndusHub</title>
                 </Helmet>
                 <div>
                     <h1 className="text-2xl font-bold text-center">Update Your Profile.</h1>

@@ -3,12 +3,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 
 const UserProfile = () => {
-    const { user, loading } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     return (
         <HelmetProvider>
             <div className="mt-8" data-aos="zoom-in-down" data-aos-duration="1000">
                 <Helmet>
-                    <title>Your Profile || User Profile of IndusHub</title>
+                    <title>Your Profile || IndusHub</title>
                 </Helmet>
                 <div className="flex flex-col justify-center items-center">
                     <div className="w-4/12 md:w-3/12 lg:w-2/12 mx-auto">

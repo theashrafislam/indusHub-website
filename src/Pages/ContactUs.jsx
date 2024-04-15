@@ -5,7 +5,7 @@ const ContactUs = () => {
         <HelmetProvider>
             <section className="py-6 dark:bg-gray-100 dark:text-gray-900">
                 <Helmet>
-                    <title>Contact Us || Contact Us of IndusHub</title>
+                    <title>Contact Us || IndusHub</title>
                 </Helmet>
                 <div className="grid max-w-6xl grid-cols-1 px-6 mx-auto lg:px-8 md:grid-cols-2 md:divide-x">
                     <div className="py-6 md:py-0 md:px-6" data-aos="zoom-in-right" data-aos-duration="1000">

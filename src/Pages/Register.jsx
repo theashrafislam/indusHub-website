@@ -1,13 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-
 import { IoEye } from "react-icons/io5";
 import { IoEyeOff } from "react-icons/io5";
-
 import { useContext, useState } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import { Helmet, HelmetProvider } from "react-helmet-async";
-
 import toast, { Toaster } from 'react-hot-toast';
 
 
@@ -64,7 +61,7 @@ const Register = () => {
         <HelmetProvider>
             <div className="mt-4" data-aos="zoom-in-down" data-aos-duration="1000">
                 <Helmet>
-                    <title>Registration Page || Registration Page of IndusHub</title>
+                    <title>Registration Page || IndusHub</title>
                 </Helmet>
                 <div className="text-center mx-4 my-3">
                     <h1 className="text-xl md:text-3xl font-bold">Registration Now</h1>

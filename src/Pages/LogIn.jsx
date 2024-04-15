@@ -4,13 +4,12 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { FaGithub, FaGoogle } from "react-icons/fa";
 import { AuthContext } from "../Provider/AuthProvider";
-// import SweetAlert2 from 'react-sweetalert2';
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import toast, { Toaster } from 'react-hot-toast';
 
 
 const LogIn = () => {
-    const { singIn, user, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
+    const { singIn, loginWithGoogle, loginWithGitHub } = useContext(AuthContext);
     const [showPass, setShowPass] = useState(false);
     const location = useLocation();
     const navigate = useNavigate()
@@ -67,7 +66,7 @@ const LogIn = () => {
         <HelmetProvider>
             <div className="mt-4">
                 <Helmet>
-                    <title>Login Page || Login Page of IndusHub</title>
+                    <title>Login Page || IndusHub</title>
                 </Helmet>
                 <div className="text-center mx-4 my-3">
                     <h1 className="text-xl md:text-3xl font-bold">Login Now</h1>
