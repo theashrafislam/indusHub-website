@@ -10,13 +10,6 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 
 import toast, { Toaster } from 'react-hot-toast';
 
-// import { ToastContainer, toast } from 'react-toastify';
-//   import 'react-toastify/dist/ReactToastify.css';
-
-
-// const lengthWarning = () => toast.warning("Your password must be at least six characters long.");
-// const uppercaseWarning = () => toast.warning("Please include at least one uppercase letter in your password.");
-// const lowercaseWarning = () => toast.warning("Your password must contain at least one lowercase letter.");
 
 const Register = () => {
     const { signUp, updateUserProfile, setReload } = useContext(AuthContext);
@@ -113,7 +106,6 @@ const Register = () => {
 
                 </div>
                 <Toaster position="top-right" />
-                {/* <ToastContainer /> */}
             </div>
         </HelmetProvider>
     );

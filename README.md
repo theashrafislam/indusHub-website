@@ -4,9 +4,7 @@
 
 ### **Here are five bullet points features and characteristics.**
 
-* **User Authentication and Registration:**
-   1. By using their email address and password for user authentication, users can safely access their accounts on the website.
-    2. With the help of the registration functionality, new users can create accounts by entering their email address, password, and complete name.
+* **User Authentication and Registration:** By using their email address and password for user authentication, users can safely access their accounts on the website.
 
 * **Social Login Integration:**
    1. Users can access the platform with ease and flexibility by choosing to log in using their GitHub or Google accounts.
