@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import toast, { Toaster } from 'react-hot-toast';
 const UpdateProfile = () => {
 
-    const { updateUserProfile, setReload, user } = useContext(AuthContext);
+    const { updateUserProfile, setReload, user, setUser } = useContext(AuthContext);
     const {displayName, email, photoURL} = user;
 
     const { register, handleSubmit, formState: { errors }} = useForm();
@@ -15,7 +15,8 @@ const UpdateProfile = () => {
         updateUserProfile(name, photo,)
             .then(() => {
                 console.log('profile updated');
-                setReload(true);
+                // setReload(true);
+                setUser({displayName : name, photoURL : photo}) 
                 toast.success('Your profile has been updated');
             })
             .catch(() => {
