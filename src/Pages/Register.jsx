@@ -33,9 +33,9 @@ const Register = () => {
 
         signUp(email, password)
             .then(result => {
-                userSignOut()
                 console.log(result);
                 toast.success('Welcome aboard! Your account is now ready to explore. Enjoy the journey ahead!', { duration: 3000 });
+                userSignOut()
                 setTimeout(() => {
                     navigate("/login");
                 }, 3000);
