@@ -5,7 +5,7 @@ import { Helmet, HelmetProvider } from "react-helmet-async";
 import toast, { Toaster } from 'react-hot-toast';
 const UpdateProfile = () => {
 
-    const { updateUserProfile, setReload, user, setUser } = useContext(AuthContext);
+    const { updateUserProfile, user, setUser } = useContext(AuthContext);
     const {displayName, email, photoURL} = user;
 
     const { register, handleSubmit, formState: { errors }} = useForm();
@@ -16,7 +16,7 @@ const UpdateProfile = () => {
             .then(() => {
                 console.log('profile updated');
                 // setReload(true);
-                setUser({displayName : name, photoURL : photo}) 
+                setUser({displayName : name, photoURL : photo, email: email}) 
                 toast.success('Your profile has been updated');
             })
             .catch(() => {
@@ -41,7 +41,7 @@ const UpdateProfile = () => {
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="email" className="text-lg">email</label>
-                            <input type="email" name="email" id="email" defaultValue={email} className="border-2 p-2" placeholder="Enter your name" {...register("email",)} />
+                            <input type="email" name="email" id="email" value={email} className="border-2 p-2" placeholder="Enter your name" {...register("email",)} />
                         </div>
                         <div className="flex flex-col">
                             <label htmlFor="photo" className="text-lg">Photo URL</label>
